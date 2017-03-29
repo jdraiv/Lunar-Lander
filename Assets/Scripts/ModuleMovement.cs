@@ -6,6 +6,8 @@ public class ModuleMovement : MonoBehaviour {
 	public float thrusterPower;
 	private float getLocation;
 
+	
+
 
 	// Use this for initialization
 	void Start () {
@@ -36,25 +38,22 @@ public class ModuleMovement : MonoBehaviour {
 		getLocation = transform.rotation.eulerAngles.z;
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			
+			Vector3 getVelocity = rb.velocity;
 
 			if ( getLocation == 0f){
 				rb.velocity = Vector3.zero;
-				rb.Sleep();
-				rb.AddForce(Vector2.up * thrusterPower);
+				rb.AddForce(Vector2.up * thrusterPower * 2);
 			}
 
 			else if (getLocation >= 5f & getLocation <= 50f)
 			{
 				rb.velocity = Vector3.zero;
-				rb.Sleep();
 				rb.AddForce(Vector2.left * thrusterPower);
 			}
 
 			else if (getLocation > 50f)
 			{
 				rb.velocity = Vector3.zero;
-				rb.Sleep();
 				rb.AddForce(Vector2.right * thrusterPower);
 			}
 		}

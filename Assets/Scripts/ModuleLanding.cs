@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class ModuleLanding : MonoBehaviour {
 
+	public AudioClip explosion;
+
+	
 	// Use this for initialization
 	void Start () {
-		
+		 GetComponent<AudioSource> ().playOnAwake = false;
+         GetComponent<AudioSource> ().clip = explosion;
 	}
 	
 	// Update is called once per frame
@@ -18,6 +22,7 @@ public class ModuleLanding : MonoBehaviour {
 		Rigidbody2D rb = GetComponent<Rigidbody2D> ();
 		if (coll.gameObject.tag == "Floor")
 		{
+			GetComponent<AudioSource> ().Play ();
             rb.velocity = Vector3.zero;
 			rb.Sleep();
 			Debug.Log("Failed");
